@@ -1,0 +1,11 @@
+<div
+  class="mini-map"
+  role="button"
+  tabindex="0"
+  (click)="handleClick()"
+  (keydown.enter)="handleClick()"
+  (keydown.space)="handleClick()"
+>
+  <div #miniMapView class="mini-map-view"></div>
+  <div class="mini-map-empty" *ngIf="!hasRoute">No route yet</div>
+</div>

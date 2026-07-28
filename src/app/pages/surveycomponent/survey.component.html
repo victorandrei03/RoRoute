@@ -1,0 +1,78 @@
+<div class="survey-container">
+    <div class="survey-card">
+        <div class="survey-header">
+            <h1>Travel Preferences Survey</h1>
+            <p>Help us tailor your perfect Romanian adventure by answering a few questions about your travel style.</p>
+        </div>
+
+        <form (ngSubmit)="onSubmitSurvey()" class="survey-form">
+            <div class="form-group">
+                <label>1. Who are you traveling with?</label>
+                <div class="options-group">
+                    <label>
+                        <input type="radio" name="travelCompanion" value="Solo" [(ngModel)]="surveyData.travelCompanion"
+                            required>
+                        Solo
+                    </label>
+                    <label>
+                        <input type="radio" name="travelCompanion" value="Partner"
+                            [(ngModel)]="surveyData.travelCompanion">
+                        Partner/Couple
+                    </label>
+                    <label>
+                        <input type="radio" name="travelCompanion" value="Family"
+                            [(ngModel)]="surveyData.travelCompanion">
+                        Family (with children)
+                    </label>
+                    <label>
+                        <input type="radio" name="travelCompanion" value="Friends"
+                            [(ngModel)]="surveyData.travelCompanion">
+                        Group of Friends
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="duration">2. What is your preferred itinerary duration (in days)?</label>
+                <input type="number" id="duration" [(ngModel)]="surveyData.duration" name="duration"
+                    placeholder="e.g., 3 to 7 days" min="1" required>
+            </div>
+
+            <div class="form-group">
+                <label>3. Which types of attractions interest you the most (select all that apply)?</label>
+                <div class="checkbox-group">
+                    <label *ngFor="let option of attractionTypeOptions">
+                        <input type="checkbox" [value]="option.value" (change)="onCheckboxChange($event, option.value)"
+                            name="attraction_{{ option.value }}">
+                        {{ option.label }}
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="budget">4. Estimated budget per person for the trip: <span>{{
+                        surveyData.budget | currency:'EUR':'symbol':'1.0-0' }}</span></label>
+                <input type="range" id="budget" [(ngModel)]="surveyData.budget" name="budget" min="100" max="10000"
+                    step="100" required>
+            </div>
+
+            <div class="success-message" *ngIf="successMessage">
+                {{ successMessage }}
+            </div>
+            <div class="error-message" *ngIf="errorMessage">
+                {{ errorMessage }}
+            </div>
+
+            <button type="submit" class="btn-submit" [disabled]="isLoading">
+                <span *ngIf="!isLoading">Submit Preferences</span>
+                <span *ngIf="isLoading">Submitting...</span>
+            </button>
+
+            <div class="skip-link">
+                <p>
+                    <a (click)="goToHome()" class="link">Skip for now</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>

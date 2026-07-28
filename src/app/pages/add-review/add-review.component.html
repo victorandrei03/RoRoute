@@ -1,0 +1,49 @@
+<div class="add-review-container">
+    <div class="review-card">
+        <div class="review-header">
+            <h1>Rate and Review: {{ attractionName }}</h1>
+            <p>Share your experience to help other travelers.</p>
+        </div>
+
+        <form (ngSubmit)="onSubmit()" class="review-form">
+            <div class="form-group rating-group">
+                <label>Your Rating:</label>
+                <div class="stars-input">
+                    <span *ngFor="let star of getStarArray()" class="star" [class.filled]="star <= rating"
+                        (click)="setRating(star)">
+                        &#9733;
+                    </span>
+                    <span class="rating-value">{{ rating }}/5</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="comment">Your Comments:</label>
+                <textarea id="comment" rows="5" [(ngModel)]="comment" name="comment"
+                    placeholder="Describe your experience..." required minlength="5" [disabled]="isLoading"></textarea>
+            </div>
+
+            <div class="alert error-message" *ngIf="errorMessage">
+                {{ errorMessage }}
+            </div>
+            <div class="alert success-message" *ngIf="successMessage">
+                {{ successMessage }}
+            </div>
+
+            <button type="submit" class="btn-submit" [disabled]="isLoading || successMessage">
+                <span *ngIf="!isLoading">
+                    {{ isEditMode ? 'Update Review' : 'Submit Review' }}
+                </span>
+                <span *ngIf="isLoading">
+                    {{ isEditMode ? 'Updating...' : 'Submitting...' }}
+                </span>
+            </button>
+
+            <div class="back-link">
+                <a [routerLink]="['/attractions', attractionId, 'reviews']" [queryParams]="{ name: attractionName }">
+                    ← Back to all reviews
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+<div class="container">
+  <div #mapViewNode class="map-view"></div>
+
+  <!-- Header with User Info and Logout for Authenticated Users -->
+  <div class="map-header esri-widget esri-widget--panel" *ngIf="currentUser">
+    <span class="user-welcome">{{ currentUser.username }}</span>
+    <button class="btn-logout" (click)="logout()">Logout</button>
+  </div>
+
+  <!-- Header with Login/Signup for Guest Users -->
+  <div class="map-header esri-widget esri-widget--panel" *ngIf="!currentUser">
+    <span class="guest-text">Browsing as Guest</span>
+    <div class="auth-buttons">
+      <button class="btn-login" (click)="goToLogin()">Login</button>
+      <button class="btn-signup" (click)="goToSignup()">Sign Up</button>
+    </div>
+  </div>
+
+  <!-- Tourism Attraction Filter -->
+  <div class="route-planner-panel esri-widget esri-widget--panel">
+    <h2>Route Planner</h2>
+
+    <div class="start-location-section">
+      <label><strong>Starting Point:</strong></label>
+      <div class="start-options">
+        <button *ngIf="!startLocation" class="btn-location" (click)="setStartToCurrentLocation()">
+          <i class="fas fa-location-arrow"></i> Set My Location
+        </button>
+  
+        <div *ngIf="startLocation" class="selected-start-card">
+          <i class="fas fa-map-marker-alt" style="color: #48bb78;"></i>
+          <span>{{ startLocation.name }}</span>
+          <button class="btn-remove-small" (click)="startLocation = null; redrawStopGraphics()">×</button>
+        </div>
+      </div>
+    </div>
+  
+    <p class="helper-text">Locations to visit:</p>
+
+    <div class="stops-list">
+      <div *ngFor="let stop of selectedStops; let i = index" class="stop-item">
+        <span>{{ i + 1 }}. {{ stop.name }}</span>
+        <div class="stop-actions">
+          <button class="btn-set-start" (click)="setAsStart(i)" title="Set as start">
+            <i class="fas fa-flag-checkered"></i>
+          </button>
+          <button class="btn-remove" (click)="removeStop(i)">×</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="route-actions" *ngIf="selectedStops.length > 0 || startLocation">
+      <button class="btn-calculate" (click)="calculateRoute()" [disabled]="selectedStops.length === 0">
+        <i class="fas fa-route"></i> Calculate Route
+      </button>
+
+      <button class="btn-clear" (click)="clearAll()" title="Clear entire itinerary">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+    </div>
+
+    <div class="save-itinerary" *ngIf="currentUser">
+      <label>Save itinerary</label>
+      <input type="text" [(ngModel)]="itineraryTitle" placeholder="Itinerary title" />
+      <textarea rows="3" [(ngModel)]="itineraryDescription" placeholder="Short description"></textarea>
+      <button class="btn-save" (click)="saveItinerary()" [disabled]="!canSaveItinerary()">
+        <i class="fas fa-bookmark"></i>
+        {{ savingItinerary ? 'Saving...' : 'Save' }}
+      </button>
+      <div class="save-status" *ngIf="saveMessage">{{ saveMessage }}</div>
+      <button class="btn-link" (click)="goToMyItineraries()">View my itineraries</button>
+    </div>
+
+    <div class="save-itinerary-guest" *ngIf="!currentUser">
+      <span>Login to save itineraries.</span>
+      <button class="btn-login-inline" (click)="goToLogin()">Login</button>
+    </div>
+  </div>
+  
+  
+  <div class="tourism-filter esri-widget esri-widget--panel">
+    <label>
+      Filter Tourist Attractions:
+      <select [(ngModel)]="selectedTourismFilter" (change)="filterTourismAttractions(selectedTourismFilter)">
+        <option *ngFor="let option of tourismFilterOptions" [value]="option.value">{{ option.label }}</option>
+      </select>
+    </label>
+  </div>
+
+  <!-- Directions Panel -->
+  <div class="directions-panel esri-widget esri-widget--panel" *ngIf="showDirections">
+    <div class="directions-header">
+      <h3>Navigation Directions</h3>
+      <button class="btn-close-directions" (click)="closeDirections()">×</button>
+    </div>
+
+    <div class="directions-summary" *ngIf="routeSummary">
+      <div class="summary-item">
+        <i class="fas fa-road"></i>
+        <span>Distance: <strong>{{ routeSummary.distance }} km</strong></span>
+      </div>
+      <div class="summary-item">
+        <i class="fas fa-clock"></i>
+        <span>Time: <strong>{{ routeSummary.time }} minutes</strong></span>
+      </div>
+    </div>
+
+    <div class="directions-list">
+      <div class="direction-item" *ngFor="let direction of directions; let i = index">
+        <div class="direction-number">{{ i + 1 }}</div>
+        <div class="direction-content">
+          <div class="direction-text">{{ direction.text }}</div>
+          <div class="direction-distance">{{ direction.length }} km</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

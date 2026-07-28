@@ -1,0 +1,222 @@
+[
+  {
+    "name": "Bran Castle",
+    "description": "Famous medieval castle, commonly known as Dracula's Castle. Built in 1377, it's one of Romania's most iconic landmarks.",
+    "latitude": 45.5150,
+    "longitude": 25.3673,
+    "category": "Historical Monument",
+    "city": "Bran",
+    "region": "Transylvania",
+    "address": "Strada General Traian Moșoiu 24, Bran 507025",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Bran_Castle.jpg/800px-Bran_Castle.jpg"
+  },
+  {
+    "name": "Palace of Parliament",
+    "description": "The world's second-largest administrative building after the Pentagon. A massive example of totalitarian architecture.",
+    "latitude": 44.4276,
+    "longitude": 26.0875,
+    "category": "Historical Monument",
+    "city": "Bucharest",
+    "region": "Muntenia",
+    "address": "Strada Izvor 2-4, București 050563",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Bucharest_Parliament.jpg/800px-Bucharest_Parliament.jpg"
+  },
+  {
+    "name": "Peleș Castle",
+    "description": "Neo-Renaissance castle built between 1873-1914 as a summer residence for King Carol I. Located in the Carpathian Mountains.",
+    "latitude": 45.3599,
+    "longitude": 25.5429,
+    "category": "Historical Monument",
+    "city": "Sinaia",
+    "region": "Muntenia",
+    "address": "Aleea Peleșului 2, Sinaia 106100",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/RO_PH_Peles_Castle.jpg/800px-RO_PH_Peles_Castle.jpg"
+  },
+  {
+    "name": "Corvin Castle",
+    "description": "Gothic-Renaissance castle, one of the largest in Europe. Built in the 15th century, it's considered one of the most beautiful castles in the world.",
+    "latitude": 45.7489,
+    "longitude": 22.8853,
+    "category": "Historical Monument",
+    "city": "Hunedoara",
+    "region": "Transylvania",
+    "address": "Strada Castelului 1-3, Hunedoara 331141",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Corvin_Castle.jpg/800px-Corvin_Castle.jpg"
+  },
+  {
+    "name": "Sighișoara Citadel",
+    "description": "UNESCO World Heritage Site. Best-preserved inhabited medieval citadel in Europe, birthplace of Vlad the Impaler.",
+    "latitude": 46.2191,
+    "longitude": 24.7914,
+    "category": "Historical Monument",
+    "city": "Sighișoara",
+    "region": "Transylvania",
+    "address": "Strada Tamplarilor 1, Sighișoara 545400",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Sighisoara_Citadel.jpg/800px-Sighisoara_Citadel.jpg"
+  },
+  {
+    "name": "Transfăgărășan Highway",
+    "description": "Spectacular mountain road crossing the Carpathian Mountains. Built in the 1970s, it's one of the most scenic drives in the world.",
+    "latitude": 45.5991,
+    "longitude": 24.6191,
+    "category": "Natural Attraction",
+    "city": "Cârțișoara",
+    "region": "Transylvania",
+    "address": "DN7C, Transfăgărășan",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Transfagarasan.jpg/800px-Transfagarasan.jpg"
+  },
+  {
+    "name": "Voroneț Monastery",
+    "description": "UNESCO World Heritage Site, famous for its vibrant blue frescoes. Built in 1488, it's known as the 'Sistine Chapel of the East'.",
+    "latitude": 47.5436,
+    "longitude": 25.8394,
+    "category": "Religious Site",
+    "city": "Gura Humorului",
+    "region": "Moldavia",
+    "address": "Strada Voroneț 166, Voroneț 727565",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Voronet_Monastery.jpg/800px-Voronet_Monastery.jpg"
+  },
+  {
+    "name": "National Museum of Art of Romania",
+    "description": "Main art museum in Romania, housed in the former royal palace. Contains extensive collections of Romanian and European art.",
+    "latitude": 44.4392,
+    "longitude": 26.0965,
+    "category": "Museum",
+    "city": "Bucharest",
+    "region": "Muntenia",
+    "address": "Calea Victoriei 49-53, București 010063",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/National_Museum_of_Art_Bucharest.jpg/800px-National_Museum_of_Art_Bucharest.jpg"
+  },
+  {
+    "name": "Turda Salt Mine",
+    "description": "Ancient salt mine converted into a stunning underground tourism destination. Features an amphitheater, Ferris wheel, and underground lake.",
+    "latitude": 46.5886,
+    "longitude": 23.7847,
+    "category": "Natural Attraction",
+    "city": "Turda",
+    "region": "Transylvania",
+    "address": "Strada Salinelor 54, Turda 401106",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Salina_Turda.jpg/800px-Salina_Turda.jpg"
+  },
+  {
+    "name": "Curtea de Argeș Monastery",
+    "description": "Beautiful 16th-century monastery, masterpiece of Byzantine-Romanian architecture. Contains royal tombs.",
+    "latitude": 45.1453,
+    "longitude": 24.6745,
+    "category": "Religious Site",
+    "city": "Curtea de Argeș",
+    "region": "Muntenia",
+    "address": "Strada Negru Vodă 27, Curtea de Argeș 115300",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Curtea_de_Arges_Monastery.jpg/800px-Curtea_de_Arges_Monastery.jpg"
+  },
+  {
+    "name": "Danube Delta",
+    "description": "UNESCO World Heritage Site. Europe's second-largest river delta, home to over 300 species of birds and 45 species of fish.",
+    "latitude": 45.0569,
+    "longitude": 29.6436,
+    "category": "Natural Attraction",
+    "city": "Tulcea",
+    "region": "Dobrogea",
+    "address": "Danube Delta Biosphere Reserve",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Danube_Delta.jpg/800px-Danube_Delta.jpg"
+  },
+  {
+    "name": "Merry Cemetery",
+    "description": "Unique cemetery famous for its colorful tombstones with naive paintings describing the deceased's life in a humorous way.",
+    "latitude": 47.9711,
+    "longitude": 23.6906,
+    "category": "Cultural Site",
+    "city": "Săpânța",
+    "region": "Maramureș",
+    "address": "Săpânța 437305",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Sapanta_Merry_Cemetery.jpg/800px-Sapanta_Merry_Cemetery.jpg"
+  },
+  {
+    "name": "Brașov Old Town",
+    "description": "Medieval city center surrounded by Carpathian peaks. Features Gothic, Baroque, and Renaissance architecture.",
+    "latitude": 45.6427,
+    "longitude": 25.5887,
+    "category": "Historical Monument",
+    "city": "Brașov",
+    "region": "Transylvania",
+    "address": "Piața Sfatului, Brașov 500025",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Brasov_Council_Square.jpg/800px-Brasov_Council_Square.jpg"
+  },
+  {
+    "name": "Black Church (Biserica Neagră)",
+    "description": "Largest Gothic church in Romania, built between 1385-1477. Named after fire damage in 1689.",
+    "latitude": 45.6416,
+    "longitude": 25.5886,
+    "category": "Religious Site",
+    "city": "Brașov",
+    "region": "Transylvania",
+    "address": "Curtea Johannes Honterus 2, Brașov 500025",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Black_Church_Brasov.jpg/800px-Black_Church_Brasov.jpg"
+  },
+  {
+    "name": "Romanian Athenaeum",
+    "description": "Concert hall in Bucharest, headquarters of the Romanian Philharmonic. Iconic neoclassical building opened in 1888.",
+    "latitude": 44.4413,
+    "longitude": 26.0974,
+    "category": "Cultural Site",
+    "city": "Bucharest",
+    "region": "Muntenia",
+    "address": "Strada Benjamin Franklin 1-3, București 030167",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Romanian_Athenaeum.jpg/800px-Romanian_Athenaeum.jpg"
+  },
+  {
+    "name": "Viscri Fortified Church",
+    "description": "UNESCO World Heritage Site. 13th-century fortified church in a traditional Saxon village, promoted by King Charles III.",
+    "latitude": 46.0675,
+    "longitude": 25.0864,
+    "category": "Religious Site",
+    "city": "Viscri",
+    "region": "Transylvania",
+    "address": "Viscri 507027",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Viscri_fortified_church.jpg/800px-Viscri_fortified_church.jpg"
+  },
+  {
+    "name": "Bicaz Gorges",
+    "description": "Spectacular canyon carved by the Bicaz River through the Carpathians. Popular destination for hiking and rock climbing.",
+    "latitude": 46.9167,
+    "longitude": 25.8333,
+    "category": "Natural Attraction",
+    "city": "Bicaz",
+    "region": "Moldavia",
+    "address": "DN12C, Bicaz Gorges",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Bicaz_Gorges.jpg/800px-Bicaz_Gorges.jpg"
+  },
+  {
+    "name": "Alba Carolina Fortress",
+    "description": "Largest Vauban-style fortress in Romania, built in 18th century. Site of the 1918 Union of Transylvania with Romania.",
+    "latitude": 46.0667,
+    "longitude": 23.5708,
+    "category": "Historical Monument",
+    "city": "Alba Iulia",
+    "region": "Transylvania",
+    "address": "Strada Eroilor, Alba Iulia 510010",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Alba_Carolina_Fortress.jpg/800px-Alba_Carolina_Fortress.jpg"
+  },
+  {
+    "name": "Mamaia Beach",
+    "description": "Romania's most popular beach resort on the Black Sea coast. 8km long sandy beach with modern facilities.",
+    "latitude": 44.2519,
+    "longitude": 28.6139,
+    "category": "Beach",
+    "city": "Mamaia",
+    "region": "Dobrogea",
+    "address": "Mamaia 900001",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Mamaia_Beach.jpg/800px-Mamaia_Beach.jpg"
+  },
+  {
+    "name": "Village Museum (Muzeul Satului)",
+    "description": "Open-air museum showcasing traditional Romanian village life. Features over 300 authentic peasant farms and houses.",
+    "latitude": 44.4719,
+    "longitude": 26.0756,
+    "category": "Museum",
+    "city": "Bucharest",
+    "region": "Muntenia",
+    "address": "Șoseaua Pavel Dimitrievici Kiseleff 28-30, București 011347",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Village_Museum_Bucharest.jpg/800px-Village_Museum_Bucharest.jpg"
+  }
+]

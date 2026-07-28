@@ -1,0 +1,159 @@
+<div class="home-container">
+  <!-- Header with Logout for Authenticated Users -->
+  <header class="page-header" *ngIf="currentUser">
+    <div class="user-info">
+      <span class="welcome-text">Welcome, {{ currentUser.username }}</span>
+    </div>
+    <button class="btn-logout" (click)="logout()">Logout</button>
+  </header>
+
+  <!-- Header with Login/Signup for Guest Users -->
+  <header class="page-header" *ngIf="!currentUser">
+    <div class="user-info">
+      <span class="welcome-text">Romania Tourism</span>
+    </div>
+    <div class="auth-buttons">
+      <button class="btn-login" (click)="goToLogin()">Login</button>
+      <button class="btn-signup" (click)="goToSignup()">Sign Up</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Discover Romania's Hidden Gems</h1>
+      <p class="hero-subtitle">
+        Plan your perfect journey, share unforgettable experiences, and explore the best routes through Romania's breathtaking attractions
+      </p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary" (click)="goToMap()">
+          <span>Start Exploring</span>
+        </button>
+        <button class="btn btn-secondary" (click)="goToItineraries()">
+          <span>Browse Itineraries</span>
+        </button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <span class="hero-card-badge">Featured</span>
+        </div>
+        <div class="hero-card-body">
+          <div class="hero-card-title">Transylvania Highlights</div>
+          <div class="hero-card-locations">
+            <span>Brașov</span>
+            <span>→</span>
+            <span>Sighișoara</span>
+            <span>→</span>
+            <span>Sibiu</span>
+          </div>
+          <div class="hero-card-meta">
+            <span>3 destinations</span>
+            <span>•</span>
+            <span>2-3 days</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="section-header">
+      <h2 class="section-title">Why Choose Our Platform?</h2>
+      <p class="section-subtitle">Everything you need to plan the perfect Romanian adventure</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card" *ngFor="let feature of features">
+        <div class="feature-icon" [attr.data-icon]="feature.icon"></div>
+        <h3 class="feature-title">{{ feature.title }}</h3>
+        <p class="feature-description">{{ feature.description }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Itineraries Section -->
+  <section class="itineraries">
+    <div class="section-header">
+      <h2 class="section-title">Popular Itineraries</h2>
+      <p class="section-subtitle">Discover routes loved by our community</p>
+    </div>
+
+    <div class="itineraries-loading" *ngIf="isLoading">
+      <div class="spinner"></div>
+      <p>Loading amazing itineraries...</p>
+    </div>
+
+    <div class="itineraries-grid" *ngIf="!isLoading && featuredItineraries.length > 0">
+      <div class="itinerary-card" *ngFor="let itinerary of featuredItineraries" (click)="viewItinerary(itinerary.id!)">
+        <div class="itinerary-card-header">
+          <div class="itinerary-avatar">
+            <span>{{ itinerary.userName?.charAt(0) || 'U' }}</span>
+          </div>
+          <div class="itinerary-author">
+            <div class="author-name">{{ itinerary.userName }}</div>
+            <div class="itinerary-date">{{ itinerary.created | date:'MMM d, y' }}</div>
+          </div>
+        </div>
+        <div class="itinerary-card-body">
+          <h3 class="itinerary-title">{{ itinerary.title }}</h3>
+          <p class="itinerary-description">{{ itinerary.description }}</p>
+          <div class="itinerary-meta">
+            <span class="meta-item">
+              {{ itinerary.attractions?.length || 0 }} stops
+            </span>
+            <span class="meta-item" *ngIf="itinerary.totalDistance">
+              {{ itinerary.totalDistance | number:'1.0-0' }} km
+            </span>
+            <span class="meta-item" *ngIf="itinerary.duration">
+              {{ itinerary.duration }}
+            </span>
+          </div>
+        </div>
+        <div class="itinerary-card-footer">
+          <div class="itinerary-stats">
+            <span class="stat-item">
+              {{ itinerary.likes || 0 }} likes
+            </span>
+            <span class="stat-item">
+              {{ itinerary.views || 0 }} views
+            </span>
+          </div>
+          <button class="btn-view">View Details</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="itineraries-empty" *ngIf="!isLoading && featuredItineraries.length === 0">
+      <p>No itineraries yet. Be the first to create one!</p>
+      <button class="btn btn-primary" (click)="goToMap()">Create Itinerary</button>
+    </div>
+
+    <div class="view-all" *ngIf="!isLoading && featuredItineraries.length > 0">
+      <button class="btn btn-outline" (click)="goToItineraries()">
+        View All Itineraries
+      </button>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <!-- <section class="cta">
+    <div class="cta-content">
+      <h2 class="cta-title">Ready to Start Your Romanian Adventure?</h2>
+      <p class="cta-subtitle">Join thousands of travelers discovering Romania's beauty</p>
+      <button class="btn btn-primary btn-large" (click)="goToMap()">
+        <span>Get Started Now</span>
+      </button>
+    </div>
+  </section> -->
+  <section class="cta cta-survey">
+    <div class="cta-content">
+      <h2 class="cta-title">First Time Here?</h2>
+      <p class="cta-subtitle">Complete our quick survey to get personalized itinerary recommendations!</p>
+      <button class="btn btn-primary btn-large" (click)="goToSurvey()">
+        <span>Take Survey Now</span>
+      </button>
+    </div>
+  </section>
+</div>

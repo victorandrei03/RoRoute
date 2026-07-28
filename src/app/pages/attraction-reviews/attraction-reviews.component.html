@@ -1,0 +1,63 @@
+<div class="reviews-container">
+    <div class="header-section">
+        <h1>Reviews for {{ attractionName }}</h1>
+        <button class="btn btn-primary" (click)="goToAddReview()" [disabled]="!isLoggedIn && !isLoading">
+            <span *ngIf="isLoggedIn">Leave a Review</span>
+            <span *ngIf="!isLoggedIn">Login to Review</span>
+        </button>
+    </div>
+
+    <div class="rating-summary-card">
+        <div class="rating-details">
+            <div class="rating-average">
+                {{ ratingSummary.average | number:'1.1-1' }}
+                <span class="rating-scale">/ 5</span>
+            </div>
+            <div class="rating-stars">{{ getStarRating(ratingSummary.average) }}</div>
+            <div class="rating-count">
+                {{ ratingSummary.count }} total ratings
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="isLoading" class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading reviews...</p>
+    </div>
+
+    <div *ngIf="!isLoading && reviews.length === 0" class="empty-state">
+        <p>Be the first to leave a review for {{ attractionName }}!</p>
+        <button class="btn btn-secondary" (click)="goToAddReview()">Leave a Review</button>
+    </div>
+
+    <div *ngIf="!isLoading && reviews.length > 0" class="reviews-list">
+        <h2>Recent Reviews</h2>
+
+        <div *ngFor="let review of reviews" class="review-card">
+            <div class="review-header">
+                <div class="user-info">
+                    <span class="user-avatar">{{ review.userName?.charAt(0) || 'U' }}</span>
+                    <span class="user-name">{{ review.userName || 'Anonymous' }}</span>
+                </div>
+                <div class="review-rating">
+                    <span class="stars">{{ getStarRating(review.rating) }}</span>
+                    <span class="score">{{ review.rating }}/5</span>
+                </div>
+            </div>
+            <p class="review-comment">{{ review.comment }}</p>
+        
+            <div class="review-actions" *ngIf="isMyReview(review)">
+                <button class="btn btn-sm btn-secondary" (click)="goToEditReview(review)">
+                    <span>&#x270E;</span> Edit
+                </button>
+            
+                <button class="btn btn-sm btn-danger" (click)="deleteReview(review)">
+                    <span>&#x1F5D1;</span> Delete
+                </button>
+            </div>
+            <div class="review-footer">
+                Posted on {{ review.created | date:'MMM d, y' }}
+            </div>
+        </div>
+    </div>
+</div>

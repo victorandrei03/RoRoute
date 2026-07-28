@@ -1,0 +1,241 @@
+/* pages/attraction-reviews/attraction-reviews.component.scss */
+
+.reviews-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f7f9fc;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+
+    h1 {
+        font-size: 2.2rem;
+        color: #333;
+        margin: 0;
+    }
+}
+
+.btn-primary {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        transform: translateY(-1px);
+    }
+
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+}
+
+.rating-summary-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.rating-details {
+    .rating-average {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #667eea;
+        line-height: 1;
+
+        .rating-scale {
+            font-size: 1.5rem;
+            color: #999;
+        }
+    }
+
+    .rating-stars {
+        color: gold;
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+
+    .rating-count {
+        color: #777;
+        font-size: 1rem;
+    }
+}
+
+.reviews-list {
+    h2 {
+        font-size: 1.8rem;
+        color: #4a5568;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #e0e0e0;
+    }
+}
+
+.review-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .user-avatar {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: #764ba2;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1rem;
+    }
+
+    .user-name {
+        font-weight: 600;
+        color: #333;
+    }
+}
+
+.review-rating {
+    .stars {
+        color: gold;
+        font-size: 1.2rem;
+        margin-right: 5px;
+    }
+
+    .score {
+        font-weight: 600;
+        color: #667eea;
+    }
+}
+
+.review-comment {
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.review-footer {
+    font-size: 0.85rem;
+    color: #a0aec0;
+    text-align: right;
+    padding-top: 10px;
+    border-top: 1px dashed #f0f0f0;
+}
+
+/* Spinner Styles */
+.loading-state,
+.empty-state {
+    text-align: center;
+    padding: 40px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e2e8f0;
+    border-top-color: #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.review-actions {
+    display: flex;
+    /* Folosim flexbox pentru a alinia butoanele la dreapta */
+    justify-content: flex-end;
+    /* Aliniază conținutul la capătul din dreapta */
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed #f0f0f0;
+
+    button {
+        margin-left: 10px;
+        /* Spațiu între butoane */
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+        /* Bază pentru efectele hover */
+    }
+
+    .btn-sm {
+        padding: 6px 12px;
+        /* Mărim puțin padding-ul */
+        font-size: 0.9rem;
+        font-weight: 600;
+        border-radius: 8px;
+        /* Colțuri mai rotunjite */
+        display: inline-flex;
+        /* Pentru a alinia textul și iconița */
+        align-items: center;
+        gap: 5px;
+        /* Spațiu între iconiță și text */
+    }
+
+    /* --------------------------------- */
+    /* STIL PENTRU BUTONUL DE EDITARE (Albastru/Gri) */
+    /* --------------------------------- */
+    .btn-secondary {
+        // Culoare de fundal deschisă sau transparentă
+        background-color: #f7f9fd;
+        color: #667eea;
+        border-color: #667eea;
+
+        &:hover {
+            background-color: #667eea;
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.2);
+        }
+    }
+
+    /* --------------------------------- */
+    /* STIL PENTRU BUTONUL DE ȘTERGERE (Roșu) */
+    /* --------------------------------- */
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        border-color: #dc3545;
+
+        &:hover {
+            background-color: #c82333;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+        }
+    }
+}

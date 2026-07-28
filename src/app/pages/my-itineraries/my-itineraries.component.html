@@ -1,0 +1,68 @@
+<div class="my-itineraries-page">
+  <div class="page-header">
+    <div class="header-text">
+      <h1>My itineraries</h1>
+      <p>All the routes you saved from the map planner.</p>
+    </div>
+    <button class="btn-primary" (click)="goToMap()">Plan a new itinerary</button>
+  </div>
+
+  <div class="status" *ngIf="isLoading">Loading your itineraries...</div>
+  <div class="status error" *ngIf="!isLoading && errorMessage">{{ errorMessage }}</div>
+
+  <div class="empty-state" *ngIf="!isLoading && !errorMessage && itineraries.length === 0">
+    <h3>No itineraries saved yet</h3>
+    <p>Build a route on the map and save it to see it here.</p>
+    <button class="btn-secondary" (click)="goToMap()">Start planning</button>
+  </div>
+
+  <div class="itinerary-grid" *ngIf="!isLoading && itineraries.length > 0">
+    <div class="itinerary-card" *ngFor="let itinerary of itineraries">
+      <div class="card-header">
+        <div>
+          <h3>{{ itinerary.title }}</h3>
+          <div class="card-date">{{ itinerary.created | date:'MMM d, y' }}</div>
+        </div>
+        <div class="card-meta">
+          <span>{{ itinerary.attractions?.length || 0 }} stops</span>
+        </div>
+      </div>
+
+      <app-mini-map
+        [itinerary]="itinerary"
+        (mapClick)="openItineraryOnMap(itinerary)"
+      ></app-mini-map>
+
+      <p class="card-description">{{ itinerary.description }}</p>
+
+      <div class="card-details">
+        <span *ngIf="itinerary.totalDistance">{{ itinerary.totalDistance | number:'1.0-0' }} km</span>
+        <span *ngIf="itinerary.duration">{{ itinerary.duration }}</span>
+        <span class="posted-badge" *ngIf="itinerary.posted">Posted</span>
+      </div>
+
+      <div class="card-actions">
+        <button
+          class="btn-post"
+          (click)="postItinerary(itinerary)"
+          [disabled]="itinerary.posted || postingId === itinerary.id"
+        >
+          {{ itinerary.posted ? 'Posted' : (postingId === itinerary.id ? 'Posting...' : 'Post') }}
+        </button>
+        <button
+          class="btn-delete"
+          (click)="deleteItinerary(itinerary)"
+          [disabled]="deletingId === itinerary.id"
+        >
+          {{ deletingId === itinerary.id ? 'Deleting...' : 'Delete' }}
+        </button>
+      </div>
+
+      <div class="card-stops" *ngIf="itinerary.attractions?.length">
+        <span class="stop-name" *ngFor="let stop of itinerary.attractions; let idx = index">
+          {{ stop.name }}<span class="stop-arrow" *ngIf="idx < itinerary.attractions.length - 1"> -> </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

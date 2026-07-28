@@ -1,0 +1,24 @@
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+  <a mat-tab-link *ngFor="let tab of tabs" (click)="activeTab = tab.link" [active]="activeTab == tab.link"
+    [routerLink]="tab.link">{{tab.name}}</a>
+
+  <!-- Right side user actions -->
+  <div class="nav-spacer"></div>
+
+  <!-- Show for authenticated users -->
+  <div *ngIf="currentUser" class="nav-user-section">
+    <span class="nav-username">{{ currentUser.username }}</span>
+    <button mat-raised-button color="warn" (click)="logout()" class="nav-logout-btn">Logout</button>
+  </div>
+
+  <!-- Show for guests -->
+  <div *ngIf="!currentUser" class="nav-auth-section">
+    <button mat-raised-button color="primary" (click)="goToLogin()" class="nav-login-btn">Login</button>
+    <button mat-raised-button color="accent" (click)="goToSignup()" class="nav-signup-btn">Sign Up</button>
+  </div>
+</nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

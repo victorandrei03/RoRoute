@@ -1,0 +1,112 @@
+<div class="feed-page">
+  <div class="page-header">
+    <div class="header-text">
+      <h1>Feed</h1>
+      <p>Shared itineraries from the community.</p>
+    </div>
+  </div>
+
+  <div class="status" *ngIf="isLoading">Loading feed...</div>
+  <div class="status error" *ngIf="!isLoading && errorMessage">{{ errorMessage }}</div>
+
+  <div class="empty-state" *ngIf="!isLoading && !errorMessage && itineraries.length === 0">
+    <h3>No itineraries posted yet</h3>
+    <p>Be the first to share your route.</p>
+  </div>
+
+  <div class="itinerary-list" *ngIf="!isLoading && itineraries.length > 0">
+    <div class="itinerary-card" *ngFor="let itinerary of itineraries">
+      <div class="card-user-row">
+        <div class="user-badge">
+          <span class="user-initial">{{ itinerary.userName?.charAt(0) || 'U' }}</span>
+          <span class="user-name">{{ itinerary.userName }}</span>
+        </div>
+        <div class="card-meta">
+          <span>{{ itinerary.attractions?.length || 0 }} stops</span>
+        </div>
+      </div>
+
+      <div class="card-header">
+        <div>
+          <h3>{{ itinerary.title }}</h3>
+          <div class="card-date">{{ itinerary.created | date:'MMM d, y' }}</div>
+        </div>
+      </div>
+
+      <app-mini-map
+        [itinerary]="itinerary"
+        (mapClick)="openItineraryOnMap(itinerary)"
+      ></app-mini-map>
+
+      <p class="card-description">{{ itinerary.description }}</p>
+
+      <div class="card-details">
+        <span *ngIf="itinerary.totalDistance">{{ itinerary.totalDistance | number:'1.0-0' }} km</span>
+        <span *ngIf="itinerary.duration">{{ itinerary.duration }}</span>
+      </div>
+
+      <div class="review-section" *ngIf="itinerary.id as itineraryId">
+        <div class="review-summary">
+          <span class="rating-text">
+            Average: {{ getRatingSummary(itinerary).average }} / 5 ({{ getRatingSummary(itinerary).count }} reviews)
+          </span>
+          <button class="btn-reviews" (click)="toggleReviews(itinerary)">
+            {{ reviewPanels[itineraryId] ? 'Hide reviews' : 'View reviews' }}
+          </button>
+        </div>
+
+        <div class="review-panel" *ngIf="reviewPanels[itineraryId]">
+          <div class="review-form">
+            <label>Leave a review</label>
+            <div class="star-row">
+              <button
+                class="star-button"
+                *ngFor="let star of getStarArray()"
+                [class.active]="star <= getReviewForm(itineraryId).rating"
+                (click)="setRating(itineraryId, star)"
+                type="button"
+              >
+                ★
+              </button>
+            </div>
+            <textarea
+              rows="3"
+              placeholder="Share your experience..."
+              [(ngModel)]="getReviewForm(itineraryId).comment"
+            ></textarea>
+            <div class="review-error" *ngIf="getReviewForm(itineraryId).error">
+              {{ getReviewForm(itineraryId).error }}
+            </div>
+            <button
+              class="btn-submit-review"
+              (click)="submitReview(itinerary)"
+              [disabled]="getReviewForm(itineraryId).submitting"
+            >
+              {{ getReviewForm(itineraryId).submitting ? 'Submitting...' : 'Submit review' }}
+            </button>
+          </div>
+
+          <div class="review-list">
+            <div class="review-empty" *ngIf="!reviewsByItinerary[itineraryId]?.length">
+              No reviews yet.
+            </div>
+            <div class="review-item" *ngFor="let review of reviewsByItinerary[itineraryId]">
+              <div class="review-header">
+                <span class="review-user">{{ review.userName || 'Anonymous' }}</span>
+                <span class="review-rating">{{ getStarDisplay(review.rating) }}</span>
+              </div>
+              <div class="review-comment">{{ review.comment }}</div>
+              <div class="review-date">{{ review.created | date:'MMM d, y' }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-stops" *ngIf="itinerary.attractions?.length">
+        <span class="stop-name" *ngFor="let stop of itinerary.attractions; let idx = index">
+          {{ stop.name }}<span class="stop-arrow" *ngIf="idx < itinerary.attractions.length - 1"> -> </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

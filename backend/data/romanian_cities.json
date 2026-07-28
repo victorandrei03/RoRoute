@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Bucharest",
+    "region": "Muntenia",
+    "description": "The capital and largest city of Romania, known as 'Little Paris' for its elegant architecture",
+    "latitude": 44.4268,
+    "longitude": 26.1025,
+    "attractions_info": "Palace of Parliament, Romanian Athenaeum, Village Museum, National Museum of Art",
+    "events": "George Enescu Festival, Bucharest International Film Festival"
+  },
+  {
+    "name": "Brașov",
+    "region": "Transylvania",
+    "description": "Medieval city surrounded by Carpathian peaks, gateway to Dracula's Castle",
+    "latitude": 45.6427,
+    "longitude": 25.5887,
+    "attractions_info": "Black Church, Council Square, Tampa Mountain, Medieval fortifications",
+    "events": "Brașov Jazz Festival, Golden Stag Music Festival"
+  },
+  {
+    "name": "Sinaia",
+    "region": "Muntenia",
+    "description": "Mountain resort town known as the 'Pearl of the Carpathians'",
+    "latitude": 45.3500,
+    "longitude": 25.5500,
+    "attractions_info": "Peleș Castle, Sinaia Monastery, Cable car to Bucegi Mountains",
+    "events": "Mountain Film Festival"
+  },
+  {
+    "name": "Sighișoara",
+    "region": "Transylvania",
+    "description": "UNESCO World Heritage medieval citadel, birthplace of Vlad the Impaler",
+    "latitude": 46.2191,
+    "longitude": 24.7914,
+    "attractions_info": "Medieval Citadel, Clock Tower, Covered Stairway, Vlad Dracul House",
+    "events": "Medieval Festival"
+  },
+  {
+    "name": "Cluj-Napoca",
+    "region": "Transylvania",
+    "description": "Vibrant university city and unofficial capital of Transylvania",
+    "latitude": 46.7712,
+    "longitude": 23.6236,
+    "attractions_info": "St. Michael's Church, Central Park, Botanical Garden, National Theatre",
+    "events": "Electric Castle Festival, Untold Festival, TIFF"
+  },
+  {
+    "name": "Sibiu",
+    "region": "Transylvania",
+    "description": "Beautiful Saxon city, European Capital of Culture 2007",
+    "latitude": 45.7983,
+    "longitude": 24.1256,
+    "attractions_info": "The Eyes of Sibiu, Brukenthal Museum, Council Tower, Huet Square",
+    "events": "Sibiu International Theatre Festival"
+  }
+]

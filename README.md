@@ -7,7 +7,7 @@
 ## 📸 Route & Itinerary Optimization Demo
 
 <!-- Insert your screenshot showing the optimal route and map paths here -->
-![Optimal Route Generation and Map Paths](<img width="1600" height="853" alt="Functionality" src="https://github.com/user-attachments/assets/9be6f1f4-7cea-499e-9e4b-d234161b86bf" />)
+![Optimal Route Generation and Map Paths](./Functionality.jpeg)
 
 ---
 
